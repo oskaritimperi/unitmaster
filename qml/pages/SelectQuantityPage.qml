@@ -34,11 +34,12 @@ Page {
         }
         VerticalScrollDecorator {}
 
-//        PullDownMenu {
-//            MenuItem {
-//                text: "About"
-//            }
-//        }
+        PullDownMenu {
+            MenuItem {
+                text: "About"
+                onClicked: pageStack.push(Qt.resolvedUrl("AboutPage.qml"))
+            }
+        }
     }
 }
 
