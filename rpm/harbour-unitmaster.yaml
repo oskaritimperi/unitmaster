@@ -1,0 +1,32 @@
+Name: harbour-unitmaster
+Summary: Unit Master
+Version: 0.1
+Release: 1
+Group: Qt/Qt
+License: COPYING
+Sources:
+- '%{name}-%{version}.tar.bz2'
+Description: |-
+  Unit conversion utility
+Configure: none
+Builder: qtc5
+PkgConfigBR:
+- Qt5Core
+- Qt5Qml
+- Qt5Quick
+- sailfishapp
+Requires:
+- sailfishsilica-qt5
+Files:
+- '%{_datadir}/applications'
+- '%{_datadir}/%{name}'
+- '%{_datadir}/icons/hicolor/86x86/apps/%{name}.png'
+- '%{_datadir}/applications/%{name}.desktop'
+- '%{_datadir}/%{name}/qml'
+- '%{_bindir}'
+- '%{_datadir}/icons/hicolor/86x86/apps'
+- /usr/bin
+- /usr/share/harbour-unitmaster
+- /usr/share/applications
+- /usr/share/icons/hicolor/86x86/apps
+PkgBR: []
