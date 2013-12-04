@@ -15,8 +15,8 @@ Name:       harbour-unitmaster
 Summary:    Unit Master
 Version:    0.1
 Release:    1
-Group:      Qt/Qt
-License:    COPYING
+Group:      Applications/Productivity
+License:    MIT
 Source0:    %{name}-%{version}.tar.bz2
 Source100:  harbour-unitmaster.yaml
 Requires:   sailfishsilica-qt5
