@@ -5,8 +5,6 @@ import "helpers.js" as Helpers
 Page {
     id: page
 
-    property bool first: false
-    property string fromUnit: ""
     property string modelFilename
     property string quantityName
 
