@@ -101,6 +101,9 @@ Page {
                 parent.focus = true;
                 updateResult();
             }
+            onTextChanged: {
+                updateResult();
+            }
         }
 
         ComboBox {
