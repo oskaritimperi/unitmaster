@@ -24,10 +24,13 @@ Page {
 
         var model = modelLoader.item;
 
-        var result = model.from(fromCombo.value, f);
-        result = model.to(toCombo.value, result);
+        var fromUnit = model.get(fromCombo.currentIndex).title;
+        var toUnit = model.get(toCombo.currentIndex).title;
 
-        resultLabel.text = formatText(result, toCombo.value);
+        var result = model.from(fromUnit, f);
+        result = model.to(toUnit, result);
+
+        resultLabel.text = formatText(result, toUnit);
     }
 
     function pluralize(s, n) {
@@ -43,6 +46,14 @@ Page {
         }
 
         return s;
+    }
+
+    function makeTitle(title, abbr) {
+        if (abbr.length > 0) {
+            return title + " (" + abbr + ")";
+        }
+
+        return title;
     }
 
     Component.onCompleted: {
@@ -74,7 +85,7 @@ Page {
                 Repeater {
                     id: fromRepeater
                     delegate: MenuItem {
-                        text: title
+                        text: makeTitle(title, abbr)
                     }
                 }
             }
@@ -84,7 +95,7 @@ Page {
         TextField {
             id: fromField
             width: parent.width
-            placeholderText: "enter " + pluralize(fromCombo.value, 0)
+            placeholderText: "enter " + pluralize(fromRepeater.model.get(fromCombo.currentIndex).title, 0)
             inputMethodHints: Qt.ImhFormattedNumbersOnly
             EnterKey.onClicked: {
                 parent.focus = true;
@@ -100,7 +111,7 @@ Page {
                 Repeater {
                     id: toRepeater
                     delegate: MenuItem {
-                        text: title
+                        text: makeTitle(title, abbr)
                     }
                 }
             }
