@@ -9,7 +9,7 @@ Page {
     property string quantityName
 
     function formatText(value, unit) {
-        return value.toPrecision(5) + " " + pluralize(unit, value);
+        return "%1 %2".arg(value.toPrecision(5)).arg(pluralize(unit, value));
     }
 
     function updateResult() {
@@ -50,7 +50,7 @@ Page {
 
     function makeTitle(title, abbr) {
         if (abbr.length > 0) {
-            return title + " (" + abbr + ")";
+            return "%1 (%2)".arg(title).arg(abbr);
         }
 
         return title;
