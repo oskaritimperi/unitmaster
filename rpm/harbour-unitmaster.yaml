@@ -18,15 +18,22 @@ PkgConfigBR:
 Requires:
 - sailfishsilica-qt5
 Files:
-- '%{_datadir}/applications'
-- '%{_datadir}/%{name}'
 - '%{_datadir}/icons/hicolor/86x86/apps/%{name}.png'
 - '%{_datadir}/applications/%{name}.desktop'
 - '%{_datadir}/%{name}/qml'
-- '%{_bindir}'
-- '%{_datadir}/icons/hicolor/86x86/apps'
-- /usr/bin
-- /usr/share/harbour-unitmaster
-- /usr/share/applications
-- /usr/share/icons/hicolor/86x86/apps
+- '%{_bindir}/%{name}'
 PkgBR: []
+
+SubPackages:
+    - Name: test
+      Summary: 'Tests for %{name}'
+      Group: Qt/Qt
+      AutoDepend: true
+      PkgConfigBR:
+      - Qt5QuickTest
+      Requires:
+      - qt5-qtdeclarative-import-qttest
+      Files:
+        - '%{_bindir}/tst-harbour-unitmaster'
+        - '%{_datadir}/tst-harbour-unitmaster/*.qml'
+        - '%{_datadir}/tst-harbour-unitmaster/*.sh'
