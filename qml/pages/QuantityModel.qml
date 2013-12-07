@@ -30,4 +30,14 @@ ListModel {
 //        title: "area"
 //        model: "AreaModel.qml"
 //    }
+
+    ListElement {
+        title: "angle"
+        model: "AngleModel.qml"
+    }
+
+    ListElement {
+        title: "pressure"
+        model: "PressureModel.qml"
+    }
 }
