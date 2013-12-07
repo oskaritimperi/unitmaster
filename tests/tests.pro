@@ -10,6 +10,7 @@ target.path = $$TARGETPATH
 
 DEPLOYMENT_PATH = /usr/share/$$TARGET
 qml.path = $$DEPLOYMENT_PATH
+qml.files = *.qml
 
 extra.path = $$DEPLOYMENT_PATH
 extra.files = runTestsOnDevice.sh
@@ -23,5 +24,5 @@ SOURCES += main.cpp
 
 INSTALLS += target qml extra
 
-# QML files and folders
-qml.files = *.qml
+OTHER_FILES += \
+    tst_MassModel.qml
