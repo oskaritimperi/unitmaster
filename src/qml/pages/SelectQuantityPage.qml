@@ -22,7 +22,6 @@ Page {
             }
             onClicked: {
                 var props = {
-                    "first": true,
                     "modelFilename": model,
                     "quantityName": title
                 };
