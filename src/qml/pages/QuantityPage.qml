@@ -22,15 +22,27 @@ Page {
         if (fromCombo.value.length === 0 || toCombo.value.length === 0)
             return;
 
-        var model = modelLoader.item;
+        var model = modelLoader.item.unitModel;
 
-        var fromUnit = model.get(fromCombo.currentIndex).title;
-        var toUnit = model.get(toCombo.currentIndex).title;
+        var fromUnit = model[fromCombo.currentIndex].name;
+        var toUnit = model[toCombo.currentIndex].name;
 
-        var result = model.from(fromUnit, f);
-        result = model.to(toUnit, result);
+        var result = modelLoader.item.from(fromUnit, f);
+        result = modelLoader.item.to(toUnit, result);
 
         resultLabel.text = formatText(result, toUnit);
+
+        var min = model[fromCombo.currentIndex].min;
+        var max = model[fromCombo.currentIndex].max;
+
+        if (f < min) {
+            fromField.label = "minimum value %1".arg(min);
+        } else if (f > max) {
+            fromField.label = "maximum value %1".arg(max);
+        } else
+        {
+            fromField.label = "";
+        }
     }
 
     function pluralize(s, n) {
@@ -63,8 +75,8 @@ Page {
     Loader {
         id: modelLoader
         onLoaded: {
-            fromRepeater.model = modelLoader.item;
-            toRepeater.model = modelLoader.item;
+            fromRepeater.model = modelLoader.item.unitModel;
+            toRepeater.model = modelLoader.item.unitModel;
         }
     }
 
@@ -85,18 +97,25 @@ Page {
                 Repeater {
                     id: fromRepeater
                     delegate: MenuItem {
-                        text: makeTitle(title, abbr)
+                        text: makeTitle(model.modelData.name, model.modelData.abbr)
                     }
                 }
             }
-            onValueChanged: updateResult()
+            onValueChanged: {
+                fromFieldValidator.bottom = modelLoader.item.unitModel[fromCombo.currentIndex].min;
+                fromFieldValidator.top = modelLoader.item.unitModel[fromCombo.currentIndex].max;
+                updateResult()
+            }
         }
 
         TextField {
             id: fromField
             width: parent.width
-            placeholderText: "enter " + pluralize(fromRepeater.model.get(fromCombo.currentIndex).title, 0)
+            placeholderText: "enter " + pluralize(fromRepeater.model[fromCombo.currentIndex].name, 0)
             inputMethodHints: Qt.ImhFormattedNumbersOnly
+            validator: DoubleValidator {
+                id: fromFieldValidator
+            }
             EnterKey.onClicked: {
                 parent.focus = true;
                 updateResult();
@@ -114,7 +133,7 @@ Page {
                 Repeater {
                     id: toRepeater
                     delegate: MenuItem {
-                        text: makeTitle(title, abbr)
+                        text: makeTitle(model.modelData.name, model.modelData.abbr)
                     }
                 }
             }

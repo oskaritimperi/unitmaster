@@ -1,6 +1,6 @@
 import QtQuick 2.0
 
-ListModel {
+QtObject {
     function from(title, value) {
         var functions = {
             "kelvin": function () { return value; },
@@ -21,23 +21,26 @@ ListModel {
         return functions[title]();
     }
 
-    ListElement {
-        title: "kelvin"
-        abbr: "K"
-    }
-
-    ListElement {
-        title: "celcius"
-        abbr: "°C"
-    }
-
-    ListElement {
-        title: "fahrenheit"
-        abbr: "F"
-    }
-
-    ListElement {
-        title: "rankine"
-        abbr: "°R"
-    }
+    property list<UnitElement> unitModel: [
+        UnitElement {
+            name: "kelvin"
+            abbr: "K"
+            min: 0
+        },
+        UnitElement {
+            name: "celcius"
+            abbr: "°C"
+            min: -273.15
+        },
+        UnitElement {
+            name: "fahrenheit"
+            abbr: "F"
+            min: -459.67
+        },
+        UnitElement {
+            name: "rankine"
+            abbr: "°R"
+            min: 0
+        }
+    ]
 }
