@@ -23,6 +23,14 @@ Page {
                 text: "Unit Master\nCopyright 2013 Oskari Timperi\n\nThe
 application icon is derived from the Meanicons Icon Set\n(http://www.meanicons.com/)."
             }
+
+            Button {
+                anchors.horizontalCenter: parent.horizontalCenter
+                text: "github.com"
+                onClicked: {
+                    Qt.openUrlExternally("http://github.com/oswjk/unitmaster")
+                }
+            }
         }
 
     }
