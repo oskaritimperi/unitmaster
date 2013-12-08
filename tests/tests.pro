@@ -25,4 +25,8 @@ SOURCES += main.cpp
 INSTALLS += target qml extra
 
 OTHER_FILES += \
-    tst_MassModel.qml
+    tst_MassModel.qml \
+    tst_AngleModel.qml \
+    tst_LengthModel.qml \
+    tst_PressureModel.qml \
+    tst_TemperatureModel.qml
