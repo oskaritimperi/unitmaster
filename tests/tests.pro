@@ -29,4 +29,5 @@ OTHER_FILES += \
     tst_AngleModel.qml \
     tst_LengthModel.qml \
     tst_PressureModel.qml \
-    tst_TemperatureModel.qml
+    tst_TemperatureModel.qml \
+    tst_AreaModel.qml

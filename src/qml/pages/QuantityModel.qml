@@ -26,10 +26,10 @@ ListModel {
 //        model: "CurrentModel.qml"
 //    }
 
-//    ListElement {
-//        title: "area"
-//        model: "AreaModel.qml"
-//    }
+    ListElement {
+        title: "area"
+        model: "AreaModel.qml"
+    }
 
     ListElement {
         title: "angle"
