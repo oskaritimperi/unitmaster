@@ -37,4 +37,20 @@ TestCase {
         var result = model.from(data.from, data.value);
         compare(result, data.res);
     }
+
+    function test_combined_data() {
+        return [
+                    { from: 'degree', fromval: 5, to: 'gon', toval: (5*Math.PI/180)*200/Math.PI },
+                    { from: 'gon', fromval: 8, to: 'arcminute', toval: (8*Math.PI/200.0)*10800/Math.PI },
+                    { from: 'gon', fromval: 8, to: 'arcsecond', toval: (8*Math.PI/200.0)*648000/Math.PI },
+                    { from: 'arcsecond', fromval: 8, to: 'arcminute', toval: 8.0/60.0 },
+                    { from: 'arcminute', fromval: 1.0, to: 'arcsecond', toval: 60.0 },
+        ];
+    }
+
+    function test_combined(data) {
+        var result = model.from(data.from, data.fromval);
+        result = model.to(data.to, result);
+        compare(result, data.toval);
+    }
 }

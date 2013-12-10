@@ -49,4 +49,19 @@ TestCase {
         var result = model.from(data.from, data.value);
         compare(result, data.res);
     }
+
+    function test_combined_data() {
+        return [
+                    { from: 'kilometer', fromval: 5, to: 'decimeter', toval: 5*1000*10 },
+                    { from: 'kilometer', fromval: 1, to: 'foot', toval: 3280.839895 },
+                    { from: 'kilometer', fromval: 1, to: 'yard', toval: 1093.613298 },
+                    { from: 'mile', fromval: 1, to: 'yard', toval: 1760 }
+        ];
+    }
+
+    function test_combined(data) {
+        var result = model.from(data.from, data.fromval);
+        result = model.to(data.to, result);
+        compare(result, data.toval);
+    }
 }
