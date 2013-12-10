@@ -21,7 +21,8 @@ Page {
                 width: parent.width
                 horizontalAlignment: TextEdit.AlignHCenter
                 text: "Unit Master\nCopyright 2013 Oskari Timperi\n\nThe
-application icon is derived from the Meanicons Icon Set\n(http://www.meanicons.com/)."
+application icon is derived from the Meanicons Icon Set\n(http://www.meanicons.com/).\n\n
+You can report bugs and feature requests on github. If you feel like it, fork it!"
             }
 
             Button {
