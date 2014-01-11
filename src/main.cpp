@@ -4,18 +4,26 @@
 
 #include <sailfishapp.h>
 
+#include "settings.h"
+
+#define STRINGIFY(X) #X
 
 int main(int argc, char *argv[])
 {
-    // SailfishApp::main() will display "qml/template.qml", if you need more
-    // control over initialization, you can use:
-    //
-    //   - SailfishApp::application(int, char *[]) to get the QGuiApplication *
-    //   - SailfishApp::createView() to get a new QQuickView * instance
-    //   - SailfishApp::pathTo(QString) to get a QUrl to a resource file
-    //
-    // To display the view, call "show()" (will show fullscreen on device).
+    QCoreApplication::setOrganizationName("oswjk");
+    QCoreApplication::setApplicationName("unitmaster");
+    QCoreApplication::setApplicationVersion(STRINGIFY(UNITMASTER_VERSION));
 
-    return SailfishApp::main(argc, argv);
+    QGuiApplication *app = SailfishApp::application(argc, argv);
+    QQuickView *view = SailfishApp::createView();
+
+    Settings settings;
+    view->rootContext()->setContextProperty("settings", &settings);
+
+    view->setSource(SailfishApp::pathTo("qml/harbour-unitmaster.qml"));
+
+    view->showFullScreen();
+
+    return app->exec();
 }
 

@@ -16,6 +16,8 @@ CONFIG += link_pkgconfig
 PKGCONFIG += sailfishapp
 INCLUDEPATH += /usr/include/sailfishapp
 
+DEFINES += UNITMASTER_VERSION=$${UNITMASTER_VERSION}
+
 target.path = /usr/bin
 
 qml.files = qml
@@ -31,7 +33,8 @@ INSTALLS += target qml desktop icon
 
 #CONFIG += sailfishapp
 
-SOURCES += main.cpp
+SOURCES += main.cpp \
+    settings.cpp
 
 OTHER_FILES += \
     qml/pages/QuantityModel.qml \
@@ -45,3 +48,6 @@ OTHER_FILES += \
     harbour-unitmaster.desktop \
     qml/harbour-unitmaster.qml \
     ../rpm/$${TARGET}.spec
+
+HEADERS += \
+    settings.h

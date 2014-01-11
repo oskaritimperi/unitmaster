@@ -23,6 +23,8 @@ Files:
 - '%{_datadir}/%{name}/qml'
 - '%{_bindir}/%{name}'
 PkgBR: []
+QMakeOptions:
+- UNITMASTER_VERSION=%{version}-%{release}
 
 SubPackages:
     - Name: test
