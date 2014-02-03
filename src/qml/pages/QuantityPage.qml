@@ -9,11 +9,12 @@ Page {
     property string quantityName
 
     function formatText(value, unit) {
-        return "%1 %2".arg(value.toPrecision(5)).arg(pluralize(unit, value));
+        var d = value.toLocaleString(Qt.locale(), "g", 5);
+        return "%1 %2".arg(d).arg(pluralize(unit, value));
     }
 
     function updateResult() {
-        var f = parseFloat(fromField.text);
+        var f = Number.fromLocaleString(Qt.locale(), fromField.text);
 
         if (fromField.text.length === 0) {
             f = 0.0;
